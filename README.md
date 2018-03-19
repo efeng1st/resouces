@@ -12,6 +12,6 @@
 * [ChatterBot](https://github.com/gunthercox/ChatterBot) : ChatterBot是一个基于机器学习的聊天机器人引擎,构建在python上,可以从已有的对话中学习, 该项目的设计允许它接入任何语言。
 
 ## 其他资源
-* [rethinkdb](https://github.com/rethinkdb/rethinkdb)
+* [rethinkdb](https://github.com/rethinkdb/rethinkdb)： RethinkDB最早是作为一个对SSD进行专门优化的MySQL存储引擎出现的，其特点在于对SSD的充分利用。而目前RethinkDB已经脱离MySQL成为一个独立的存储。
 * [rabbitmq](https://github.com/rabbitmq/rabbitmq-server)
 

@@ -12,4 +12,4 @@
 
 ## 其他资源
 * [rethinkdb](https://github.com/rethinkdb/rethinkdb)
-
+* [rabbitmq](https://github.com/rabbitmq/rabbitmq-server)

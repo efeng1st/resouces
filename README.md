@@ -9,6 +9,7 @@
 * [electronic实现的wechat](https://github.com/geeeeeeeeek/electronic-wechat)
 
 ## python资源
+* [Python资源集合](https://github.com/Tim9Liu9/TimLiu-Python)
 * [ChatterBot](https://github.com/gunthercox/ChatterBot) : ChatterBot是一个基于机器学习的聊天机器人引擎,构建在python上,可以从已有的对话中学习, 该项目的设计允许它接入任何语言。
 
 ## 其他资源

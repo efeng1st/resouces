@@ -4,6 +4,7 @@
 * [dva + antd + lumen后台管理实现](https://github.com/walkerqiao/dva-antd-demos)
 * [php版本的swoole服务管理脚本](https://github.com/walkerqiao/swoole_command)
 * [PHP Swoole Framework](https://github.com/matyhtf/framework)
+* [Magento研究](./docs/magento.md)
 
 ## javascript资源
 * [react + redux + es6 + webpack前端组件化开发](https://github.com/walkerqiao/react-redux-router-demo)

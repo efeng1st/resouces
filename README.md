@@ -14,6 +14,9 @@
 * [ChatterBot](https://github.com/gunthercox/ChatterBot) : ChatterBot是一个基于机器学习的聊天机器人引擎,构建在python上,可以从已有的对话中学习, 该项目的设计允许它接入任何语言。
 * [微博爬虫](https://github.com/SpiderClub/weibospider)
 
+## go语言
+* [Go入门指南](docs/go/the-way-to-go/README.md)
+
 ## 大数据和人工智能
 * [深度学习](docs/deep-learning.md)
 ## 其他资源

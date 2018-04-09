@@ -109,10 +109,6 @@ At a time when it is hard to tell one computer book from another, Manning celebr
 ## 章节目录
 
 - 第一章: Go语言介绍
-> 本章解决如下问题:
-  使用Go语言解决现代计算的挑战
-  使用go命令
-
     - 1.1 [使用Go来解决现代编程挑战](chapters/1.1.md)
     - 1.2 Hello, Go
     - 1.3 Summary

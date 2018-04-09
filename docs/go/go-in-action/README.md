@@ -29,14 +29,21 @@
 ----- WILLIAM KENNEDY
 
 ## 致谢(acknowledgments)
-We have spent over 18 months writing this book, but none of our efforts would have been possible without the support of many people—our families, friends, colleagues, and mentors; the entire Go community; and our publisher, Manning.
-When you’re writing a book like this, you need an editor who will not only share the good but help you through the bad and be there for you at all cost. Jennifer Stout, you’re a brilliant, nurturing, and amazing friend. Thank you for everything and for being there when we needed you the most. Thank you for making this book a reality. Thanks also to all the other folks at Manning who worked with us during the develop- ment and production of our book.
-You can’t know everything, so it requires a community of people to give their time and knowledge. We thank the Go community and everyone who participated in reviews and provided feedback on the manuscript at various stages of its development, especially Adam McKay, Alex Basile, Alex Jacinto, Alex Vidal, Anjan Bacchu, Benoît Benedetti, Bill Katz, Brian Hetro, Colin Kennedy, Doug Sparling, Jeffrey Lim, Jesse Evans, Kevin Jackson, Mark Fisher, Matt Zulak, Paulo Pires, Peter Krey, Philipp K. Janert, Sam Zaydel, and Thomas O’Rourke. Thanks also to Jimmy Frasché for his care- ful technical review of the final manuscript shortly before it went into production.
+
+我们花了18个月来写这本书，但是如果没有很多人的支持我们的付出努力是不可能的，我们的家庭、朋友、同事和导师；整个Go社区；我们的出版商，Manning。
+
+当您正在写类似这样的书的时候，你需要一个编辑，他不仅能分享你的有点，而且能不惜一切代价帮你度过困境。Jennifer Stout，你是个聪明的，有教养的，了不起的朋友。感谢你所做的一切，感谢你在我们最需要你的时候陪伴着你。谢谢你让这本书成为现实。也感谢所有在本书的开发和制作过程中与我们一起工作的曼宁的同事们。
+
+You can’t know everything, so it requires a community of people to give their time and knowledge. We thank the Go community and everyone who participated in reviews and provided feedback on the manuscript at various stages of its development, especially Adam McKay, Alex Basile, Alex Jacinto, Alex Vidal, Anjan Bacchu, Benoît Benedetti, Bill Katz, Brian Hetro, Colin Kennedy, Doug Sparling, Jeffrey Lim, Jesse Evans, Kevin Jackson, Mark Fisher, Matt Zulak, Paulo Pires, Peter Krey, Philipp K. Janert, Sam Zaydel, and Thomas O’Rourke. Thanks also to Jimmy Frasché for his careful technical review of the final manuscript shortly before it went into production.
+
 There are a few other people who need to be acknowledged in particular.
+
 Kim Shrier was there from the very beginning, providing reviews, and giving of his time to teach. We learned so many things from you and we are grateful. The book is better technically because of you.
+
 Bill Hathaway got involved heavily in the last year of writing the book, shaping each chapter; his thoughts and opinions were invaluable. We must give Bill credit as a coauthor of chapter 9. It would not exist without Bill’s time, talent, and effort.
 
 We would also like to recognize Cory Jacobson, Jeffery Lim, Chetan Conikee, and Nan Xiao, who consistently provided time for reviews, opinions, and guidance. Thanks to Gabriel Aszalos, Fatih Arslan, Kevin Gillette, and Jason Waldrip for help with sample code and reviews. And special thanks to Steve Francia for contributing the foreword and endorsing our work.
+
 We end by sincerely thanking our families and friends. Anything that takes this level of commitment and time always has an effect on the ones you love.
 WILLIAM KENNEDY
 I would like to thank Lisa, my beautiful wife, and my five children: Brianna, Melissa, Amanda, Jarrod, and Thomas. Lisa, I know you and the kids spent way too many days, nights, and weekends without your husband and father. Thank you for letting me take all the time I needed to work on the book: I love each and every one of you.
@@ -49,26 +56,31 @@ I would like to thank my fiancée Abby, and my three children Halie, Wyatt, and
 I would also like to thank Bill Kennedy for the tremendous effort he has poured into this book—we asked him to help us write it, and he steered the ship most of the way due to the demands of our jobs and organizing GopherCon. I also want to thank the community for all their reviews and words of encouragement.
 
 ## 关于本书
-Go is an open source programming language that makes it easy to build simple, reli- able, and efficient software. Although it borrows ideas from existing languages, it has a unique and simple nature that makes Go programs different in character from pro- grams written in other languages. It balances the capabilities of a low-level systems lan- guage with some high-level features you see in modern languages today. This creates a programming environment that allows you to be incredibly productive, performant, and fully in control; in Go, you can write less code and do so much more.
-### Who should read this book?
-This book was written for an intermediate-level developer who has some experience with other programming languages and wants to learn Go. Our goal in writing this book is to provide you an intensive, comprehensive, and idiomatic view of the lan- guage. We focus on both the specification and implementation of the language, including topics that range from language syntax, Go’s type system, concurrency, channels, testing, and more. We believe this book is perfect for anyone who wants a jump-start in learning Go as well as for those who want a more thorough understand- ing of the language and its internals.
-Roadmap
-The book consists of nine chapters, briefly described here:
-- Chapter 1 is a quick introduction to what the language is, why it was created, and the problems it solves. It also briefly introduces some of Go’s core concepts such as concurrency.
-- Chapter 2 walks you through a complete Go program, teaching you all that Go has to offer as a language along the way.
-- Chapter 3 introduces the concept of packaging and how to best set up your Go workspace and development environment. It also shows how to use the Go tool- ing, including fetching and building your code.
-- Chapter 4 provides a detailed view of Go’s built-in data types: arrays, slices, and maps. It explains the implementation and mechanics behind these data structures.
-- Chapter 5 is a detailed view of Go’s type system, from struct types to named types to interfaces and type embedding. It also covers how all these things come together to allow you to structure and write complex software in a simpler way.
-- Chapter 6 dives deeply into how the Go scheduler, concurrency, and channels work. It teaches the mechanics behind this aspect of the language.
-- Chapter 7 takes what you learn from chapter 6 and shows more practical code around concurrency patterns. You will learn how to implement goroutine pools to manage work and how to pool reusable resources to be shared.
-- Chapter 8 explores the standard library and goes deep into three packages: log, json, and io. The chapter focuses on some of the intricacies of these three packages.
-- Chapter 9 closes the book by showing how to use the testing and benchmarking framework. You will learn how to write unit and table tests and benchmarks, and how to add examples to your documentation and use the examples as tests.
+Go是一个开源程序语言，它能很容易构建简单、可信赖、有效的软件。虽然它是从其他语言借用的想法，但是它也有自己的独特性和简单性，使得Go程序和其他语言写的程序不同。它权衡低级语言和现今语言的一些高级特性。这创造了一个编程环境，可以提升生产效率，性能，以及控制能力。在Go中，写更少的代码，实现更多的功能。
+
+### 谁应该读本书?
+该书是写给中级程序员，他们有一些其他编程语言的经验并且希望学习Go语言的。我们写本书的目标是提供一个密集的、全面的、地道的语言视图。我们聚焦语言的规范和实现，包括从语言语法，Go的类型系统、并发、通道、测试等多个主题。我们相信本书对那些想要跳转学习Go语言以及那些想要透彻理解语言和它内部机制的人都是完美的。
+
+### Roadmap(路标)
+
+本书由九个章节组成，简略描述如下:
+
+- 第一章: 快速介绍Go语言是什么，为什么要创建它，以及它能解决的问题。也简单的介绍了一些Go的核心概念，例如并发。
+- 第二章: 带你完成一个完整的Go程序，顺便教你Go作为一个语言需要提供的所有东西。
+- 第三章: 介绍包的概念，以及如何设置Go工作空间和开发环境。也展示了如何使用Go工具，包括获取和构建代码。
+- 第四章: 提供了go内建数据类型的详情: 数组, 分片和map。介绍了这些数据结构后面的实现和机制。
+- 第五章: 详细介绍了God的类型系统，从结构体类型到命名类型到接口到类型嵌入。也涵盖了如何以简单的方式利用这些一起构建实现复杂的软件。
+- 第六章: 深入探讨Go调度器、并发、通道如何工作。它教会了这方面语言背后的机制。
+- 第七章: 带着第六章学习到的东西，展示更多并发模式的实际代码。这里将学到如何实现goroutine池来管理work，以及如何复用池来实现资源共享。
+- 第八章: 探讨标准库，深入三个包: log, json和io。本章重点讨论了这三个包的复杂型。
+- 第九章: 通过展示如何使用测试和基准测试框架来结束本书。你将学到如何书写单元测试和基准测试，以及如何在文档中添加例子，以及如何使用例子来测试。
 
 ### 关于本书源码
-All source code in the book is presented in amono-spacedtypefacelikethis, which sets it off from the surrounding text. In many listings, the code is annotated to point out key concepts, and numbered bullets are sometimes used in the text to provide additional information about the code.
-Source code for the examples in the book is available for download from the pub- lisher’s website at www.manning.com/books/go-in-action and from GitHub at https:// github.com/goinaction/code.
+- [曼宁网站](https://www.manning.com/books/go-in-action)
+- [github](https:// github.com/goinaction/code)
 
-### Author Online
+### 作者在线
+
 Purchase of Go in Action includes free access to a private web forum run by Manning Publications where you can make comments about the book, ask technical questions, and receive help from the authors and from other users. To access the forum and sub- scribe to it, point your web browser to www.manning.com/books/go-in-action. This page provides information on how to get on the forum once you’re registered, what kind of help is available, and the rules of conduct on the forum.
  Licensed to Mark Watson <nordickan@gmail.com>
  xviii
@@ -151,3 +163,6 @@ At a time when it is hard to tell one computer book from another, Manning cele- 
 4. [GoingGo博客](https://www.ardanlabs.com/blog/)
 5. [slack](https://www.slack.com)
 6. [MEAP曼宁早期访问计划](https://www.manning.com/meap-program)
+7. [曼宁网站](https://www.manning.com/books/go-in-action)
+8. [github](https:// github.com/goinaction/code)
+

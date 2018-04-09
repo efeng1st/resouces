@@ -2,20 +2,29 @@
 ======================
 
 ## 序言
-In computer science, when you think of exceptional people, a few names come to mind. Among them are Rob Pike, Robert Griesmier, and Ken Thompson, who are responsible for UNIX, Plan 9, B, Java’s JVM HotSpot, V8, Strongtalk, Sawzall, Ed, Acme, and UTF8, among many other creations. In 2007, they came together to experi- ment with a very powerful idea, combining their decades of experience to create a new systems language inspired by existing languages but truly unlike anything that came before. They released their creation as open source and named it “Go.” If Go continues on the course it is now on, it may indeed prove to be the most impactful of their many notable creations.
 
-Humanity is at its best when people join together with the pure intention of mak- ing the world a better place. In 2013, Brian and Erik formed the Gopher Academy and were soon joined by Bill and a few other similar-minded people, united in the pursuit of building a better community around the Go language. They first noticed that the community needed a place to gather and share material online so they set up the Go discussion board (slack) and the Gopher Academy blog. As time went on and the community continued to grow, they established the world’s first global Go confer- ence, GopherCon. Through their deep experience with the community, they knew that a resource was needed to guide the many thousands of programmers into this new language, so they began to write the book that you now hold in your hands.
-This book is a labor of love from three individuals who have given so much of their time and talents to the Go community. I have been alongside Bill, Brian, and Erik to witness them writing and revising over the past year as they maintained their existing responsibilities as editors of the Gopher Academy blog, as conference organizers, in their day jobs, and in their roles as fathers and husbands. To them this is not a book, but a tribute to the language they love. They weren’t content with producing a “good” book. They wrote and reviewed, rewrote and revised many drafts of each page, exam- ple, and chapter until they had a book worthy of the language they hold so dear.
-It takes courage to leave a language of comfort and familiarity and try a language that is not only new to you but new to the world. This road less traveled is a bumpy one, lined with bugs that only early adopters are familiar with. It includes unexpected errors, spotty or missing documentation, and a lack of established libraries to use. This is the path of a trailblazer, a pioneer. If you are reading this now, you are likely on the beginning of this journey.
-From the first chapter to the last, this book is crafted to provide you, the reader, a concise and comprehensive guide to exploring, learning, and using Go. In all the world, you couldn’t hope to have better guides than Bill, Brian, and Erik. I’m excited for you to discover all the goodness that is Go and look forward to seeing you online and at the Go meetups and conferences.
+在计算机科学中，当你联想杰出人员时，脑海中会出现一些人。在他们之中有Rob Pike, Robert Griesmier, 以及Ken Thompson, 他们都是负责Unix，Plan 9, B, Java的JVM Hotspot, V8, Strongtalk, Sawzall, Ed, Acme,以及UTF8， 还有其他很多作品。 2007年，他们聚集到一起，用一个非常强大的想法做了个试验，结合他们十多年的经验，创建一种新的系统语言，这个语言由现有语言启发，但是与任何语言都不同。他们发布了他们的创作，开放源码并将其命名为"Go". 如果Go语言继续下去，它必将被证明成为他们显著作品中最具影响力的作品之一。
 
------ STEVE FRANCIA GOPHER AND CREATOR OF HUGO, COBRA, VIPER, AND SPF13-VIM
+当人们聚集在一起，纯属为了把世界变得更美好，那么这些人就处于最佳状态。2013年，Brian和Erik成立了地鼠学院(Gopher Academy), 不久后Bill和其他一些类似的志同道合的人加入进来， 团结一致的围绕Go语言构建一个更好的社区。他们第一次注意到社区需要需要一个地方来在线搜集和共享资料, 因此他们搭建了Go讨论版块(slack)和地鼠学院博客。随着时间迁移,社区不断发展壮大，它们确立了世界上第一个全局的Go发布会(Conference) - GopherCon。通过社区深入了解，它们了解到需要一个资源来指导成千上万的程序员进入这个语言，因此它们开始写这本你正在读的书。
+
+这本书是三个在Go社区贡献了很多时间和才能的人爱的贡献。 我见证了Bill, Brian, Erik在过去一年中写作、修正内容的过程，同时他们还维护现有的地鼠学院博客的编辑、会议组织者，在他们日常工作、以及作为父亲和丈夫角色的时间里。对于他们来说，这不是一本书，而是对他们喜欢语言的一种致敬。他们不满足于制作一本好书。他们每页、每个例子、每章内容都不断写作、检查、重写、修正很多次，直到他们出了和他们珍视语言匹配的该书为止。
+
+离开一种舒适、熟悉的语言去尝试一种不仅对你自己新而且对全世界都新的语言来说是需要很大的勇气的。这是一条崎岖不平的道路，布满了只有早期试验者熟悉的缺陷。包括意外错误、参差不齐或缺少文档，以及缺少使用的已建库等。这是开拓者、先锋的道路。如果你正在读这里， 你很可能就是在旅途的开始。
+
+从第一章到最后一章，本书为读者提供简明、全面的探索、学习和使用Go语言的指导。 全世界来说，你不可能有比Bill, Brian, Erik更好的指导了。为你发现Go的美好，期待在网上、Go的聚会和会议上看到你。
+
+----- STEVE FRANCIA 
+      GOPHER AND CREATOR OF HUGO,
+      COBRA, VIPER, AND SPF13-VIM
 
 ## 前言
-Back in October 2013 after writing the GoingGo.net blog for a few months, I received a call from Brian Ketelsen and Erik St. Martin. They were in the process of writing this book and asked if I would be a part of it. I jumped at the opportunity and started writ- ing. I was still very new to Go at the time, so this was a great chance to learn more about the language, work with Brian and Erik and share what I learned at a greater scale than the blog.
-After we finished the first four chapters, we released the book under the Manning Early Access Program (MEAP). Soon after, we received an email from a member of the language team. This person provided a review that contained a detailed set of changes plus a wealth of knowledge, advice, encouragement, and support. From there, we decided to rewrite chapter 2 from scratch and performed a major overhaul of chapter 4. We learned that rewriting chapters was not going to be the exception but the norm. That experience also taught us that it was going to take the help of the community to write this book, and we needed to make that happen immediately.
-Ever since then, this book has been a community effort. We have tried to put a proper amount of time in researching each chapter, developing code samples, and working with the community to review, discuss, and edit the material and code. We have done our best to make sure this book is technically correct, shows only idiomatic code, and teaches you Go the way the community feels it should be written and thought about. We do have some of our own thoughts, practices, and guidelines sprinkled in as well.
-We hope this book helps you learn Go and you find it a useful resource today and for many years to come. Brian, Erik, and I are always online and available to help any- one who reaches out to us. If you purchased the book, thank you, and don’t be shy about saying “hi.”
+2013年十月，在写完GoingGo.net博客几个月，我接到Brian Ketelsen和Erik St. Martin的电话。他们正准备写这本书，问我是否愿意加入其中。我就抓住机会加入其中。当时我对Go语言还是新手，因此这是我很好的学习Go语言的机会，和Brian, Erik工作，分享比博客所学更多的知识。
+
+在我们完成前面四章，我们在MEAP下面发布了该书。不久之后，我们收到一个来自该语言组成员的邮件。该人提供了审核，包含了详细的修改、加上丰富的知识、建议、鼓励和支持。从那开始，我们决定重新重写第二章, 并对第四章进行重大修改。我们了解到重写章节不会是例外，而是常态。这一经历也告诉我们，要让世界各界都帮我们写这本书，我们必须立即做到这一点。
+
+从那时起，该书已经成为社区努力的结果。我们试图在研究每章放适量的时间，开发代码样例，以及和社区一起检查、讨论以及编辑材料和代码。我们尽力确保本书技术的正确性，只展示符合习惯的代码，教你社区感觉舒服方式书写和考虑的Go语言。我们的确也有我们自己的想法、实践和指导方针。
+
+我们希望本书能帮你学习Go，以及你能查找现在或多年以后还有用的资源。Brian, Erik和我经常在线，能帮助任何能找到我们的人。如果你购买此书，感谢您，不要害羞说"hi".
 
 ----- WILLIAM KENNEDY
 
@@ -134,3 +143,11 @@ At a time when it is hard to tell one computer book from another, Manning cele- 
     - 9.2 Examples
     - 9.3 Benchmarking
     - 9.4 Summary
+
+## 链接
+1. [地鼠学院博客](https://www.gopheracademy.com/)
+2. [GopherCon Github](https://github.com/gophercon)
+3. [Hugo](https://gohugo.io/): 世界最快的构建网站的框架。
+4. [GoingGo博客](https://www.ardanlabs.com/blog/)
+5. [slack](https://www.slack.com)
+6. [MEAP曼宁早期访问计划](https://www.manning.com/meap-program)

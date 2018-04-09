@@ -4,7 +4,7 @@
 ## 目录
 
 - 第一章: Go语言介绍
-    - 1.1 Solving modern programming challenges with Go
+    - 1.1 [使用Go来解决现代编程挑战](chapters/1.1.md)
     - 1.2 Hello, Go
     - 1.3 Summary
 - 第二章: Go语言快速入门

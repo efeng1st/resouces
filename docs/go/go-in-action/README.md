@@ -46,19 +46,20 @@ Bill Hathaway在写这本书的最后一年投入了大量的精力，塑造了�
 
 最后我们还要感谢我们的家人和朋友。任何承担这种承诺和时间的事情都会对所爱的人产生影响。
 
-> WILLIAM KENNEDY
-  感谢Lisa, 我漂亮的妻子和我五个孩子:Brianna, Melissa, Amanda, Jarrod, 和Thomas。Lisa, 我知道你和孩子们度过了太多的没丈夫和父亲的日日夜夜。感谢你让我花了所有时间来写这本书: 我爱你们。
+    WILLIAM KENNEDY
+    感谢Lisa, 我漂亮的妻子和我五个孩子:Brianna, Melissa, Amanda, Jarrod, 和Thomas。Lisa, 我知道你和孩子们度过了太多的没丈夫和父亲的日日夜夜。感谢你让我花了所有时间来写这本书: 我爱你们。
 
-  我还要感谢我的生意伙伴Ed Gonzalez, 创意总监Erick Zelaya, 以及Ardan工作室的所有成员。Ed，感谢你一开始就支持我。没有你我是做不到的。你不仅仅是一个商业伙伴，你还是一个朋友和兄弟: 谢谢你。Erick, 感谢你支持我和公司所做的一切。不知道没有你我们会怎样。
+    我还要感谢我的生意伙伴Ed Gonzalez, 创意总监Erick Zelaya, 以及Ardan工作室的所有成员。Ed，感谢你一开始就支持我。没有你我是做不到的。你不仅仅是一个商业伙伴，你还是一个朋友和兄弟: 谢谢你。Erick, 感谢你支持我和公司所做的一切。不知道没有你我们会怎样。
 
-> BRIAN KETELSEN
-  我要感谢我的家庭，对他们出这本书长达四年的耐心: Christine, Nathan, Lauren, 和Evelyn: thank you for putting up with me as I wrote chapters in a lounge chair by the pool while you were swimming.
-  Thank you for believing that this book could and would be published.
+    BRIAN KETELSEN
+    我要感谢我的家庭，对他们出这本书长达四年的耐心: Christine, Nathan, Lauren, 和Evelyn: thank you for putting up with me as I wrote chapters in a lounge chair by the pool while you were swimming.
+    Thank you for believing that this book could and would be published.
 
-> ERIK ST. MARTIN
+    ERIK ST. MARTIN
 
-  I would like to thank my fiancée Abby, and my three children Halie, Wyatt, and Allie for being so patient and understanding how much time writing a book and organizing conferences demand. I love you all so very much and am lucky to have you.
-  I would also like to thank Bill Kennedy for the tremendous effort he has poured into this book—we asked him to help us write it, and he steered the ship most of the way due to the demands of our jobs and organizing GopherCon. I also want to thank the community for all their reviews and words of encouragement.
+    I would like to thank my fiancée Abby, and my three children Halie, Wyatt, and Allie for being so patient and understanding how much time writing a book and organizing conferences demand. I love you all so very much and am lucky to have you.
+
+    I would also like to thank Bill Kennedy for the tremendous effort he has poured into this book—we asked him to help us write it, and he steered the ship most of the way due to the demands of our jobs and organizing GopherCon. I also want to thank the community for all their reviews and words of encouragement.
 
 ## 关于本书
 Go是一个开源程序语言，它能很容易构建简单、可信赖、有效的软件。虽然它是从其他语言借用的想法，但是它也有自己的独特性和简单性，使得Go程序和其他语言写的程序不同。它权衡低级语言和现今语言的一些高级特性。这创造了一个编程环境，可以提升生产效率，性能，以及控制能力。在Go中，写更少的代码，实现更多的功能。

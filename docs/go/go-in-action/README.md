@@ -34,26 +34,31 @@
 
 当您正在写类似这样的书的时候，你需要一个编辑，他不仅能分享你的有点，而且能不惜一切代价帮你度过困境。Jennifer Stout，你是个聪明的，有教养的，了不起的朋友。感谢你所做的一切，感谢你在我们最需要你的时候陪伴着你。谢谢你让这本书成为现实。也感谢所有在本书的开发和制作过程中与我们一起工作的曼宁的同事们。
 
-You can’t know everything, so it requires a community of people to give their time and knowledge. We thank the Go community and everyone who participated in reviews and provided feedback on the manuscript at various stages of its development, especially Adam McKay, Alex Basile, Alex Jacinto, Alex Vidal, Anjan Bacchu, Benoît Benedetti, Bill Katz, Brian Hetro, Colin Kennedy, Doug Sparling, Jeffrey Lim, Jesse Evans, Kevin Jackson, Mark Fisher, Matt Zulak, Paulo Pires, Peter Krey, Philipp K. Janert, Sam Zaydel, and Thomas O’Rourke. Thanks also to Jimmy Frasché for his careful technical review of the final manuscript shortly before it went into production.
+你不可能无所不知，因此需要社区的人贡献他们的时间和知识。我们感谢Go社区以及在各个阶段中所有参与评论和提供反馈的手稿, 特别是Adam McKay, Alex Basile, Alex Jacinto, Alex Vidal, Anjan Bacchu, Benoît Benedetti, Bill Katz, Brian Hetro, Colin Kennedy, Doug Sparling, Jeffrey Lim, Jesse Evans, Kevin Jackson, Mark Fisher, Matt Zulak, Paulo Pires, Peter Krey, Philipp K. Janert, Sam Zaydel, 以及Thomas O’Rourke。也非常感谢Jimmy Frasché在即将上线时候的细心技术评论手稿。
 
-There are a few other people who need to be acknowledged in particular.
+还有一些人需要特别鸣谢。
 
-Kim Shrier was there from the very beginning, providing reviews, and giving of his time to teach. We learned so many things from you and we are grateful. The book is better technically because of you.
+Kim Shrier是最早开始提供评论，并给予时间去教。我们从你身上学到很多东西，我们非常感激。这本书在技术上更好都是因为你。
 
-Bill Hathaway got involved heavily in the last year of writing the book, shaping each chapter; his thoughts and opinions were invaluable. We must give Bill credit as a coauthor of chapter 9. It would not exist without Bill’s time, talent, and effort.
+Bill Hathaway在写这本书的最后一年投入了大量的精力，塑造了每一章；他的思想和见解是无价的。我们必须给Bill信用卡作为第九章的合著者。如果没有Bill的时间、才干和努力，它就不会存在。
 
-We would also like to recognize Cory Jacobson, Jeffery Lim, Chetan Conikee, and Nan Xiao, who consistently provided time for reviews, opinions, and guidance. Thanks to Gabriel Aszalos, Fatih Arslan, Kevin Gillette, and Jason Waldrip for help with sample code and reviews. And special thanks to Steve Francia for contributing the foreword and endorsing our work.
+我们还要感谢Cory Jacobson, Jeffery Lim, Chetan Conikee和Nan xiao, 他们一直提供评论、意见和指导。感谢Gabriel Aszalos, Fatih Arslan, Kevin Gillette和Jason Waldrip帮助示例代码和评论。还要特别感谢Steve Francia对序言的贡献以及对我们工作的支持。
 
-We end by sincerely thanking our families and friends. Anything that takes this level of commitment and time always has an effect on the ones you love.
-WILLIAM KENNEDY
-I would like to thank Lisa, my beautiful wife, and my five children: Brianna, Melissa, Amanda, Jarrod, and Thomas. Lisa, I know you and the kids spent way too many days, nights, and weekends without your husband and father. Thank you for letting me take all the time I needed to work on the book: I love each and every one of you.
-I would also like to thank my business partner Ed Gonzalez, creative director Erick Zelaya, and the entire team at Ardan Studios. Ed, thanks for supporting me from the beginning. I could not have done this without you. You are more than just a business partner, you are a friend and brother: thank you. Erick, thanks for everything you do to support me and the company. Not sure what we would do without you.
-BRIAN KETELSEN
-I would like to thank my family for their patience during this four-year-long process of producing a book. Christine, Nathan, Lauren, and Evelyn: thank you for putting up with me as I wrote chapters in a lounge chair by the pool while you were swimming.
-Thank you for believing that this book could and would be published.
-ERIK ST. MARTIN
-I would like to thank my fiancée Abby, and my three children Halie, Wyatt, and Allie for being so patient and understanding how much time writing a book and organizing conferences demand. I love you all so very much and am lucky to have you.
-I would also like to thank Bill Kennedy for the tremendous effort he has poured into this book—we asked him to help us write it, and he steered the ship most of the way due to the demands of our jobs and organizing GopherCon. I also want to thank the community for all their reviews and words of encouragement.
+最后我们还要感谢我们的家人和朋友。任何承担这种承诺和时间的事情都会对所爱的人产生影响。
+
+> WILLIAM KENNEDY
+  感谢Lisa, 我漂亮的妻子和我五个孩子:Brianna, Melissa, Amanda, Jarrod, 和Thomas。Lisa, 我知道你和孩子们度过了太多的没丈夫和父亲的日日夜夜。感谢你让我花了所有时间来写这本书: 我爱你们。
+
+  我还要感谢我的生意伙伴Ed Gonzalez, 创意总监Erick Zelaya, 以及Ardan工作室的所有成员。Ed，感谢你一开始就支持我。没有你我是做不到的。你不仅仅是一个商业伙伴，你还是一个朋友和兄弟: 谢谢你。Erick, 感谢你支持我和公司所做的一切。不知道没有你我们会怎样。
+
+> BRIAN KETELSEN
+  我要感谢我的家庭，对他们出这本书长达四年的耐心: Christine, Nathan, Lauren, 和Evelyn: thank you for putting up with me as I wrote chapters in a lounge chair by the pool while you were swimming.
+  Thank you for believing that this book could and would be published.
+
+> ERIK ST. MARTIN
+
+  I would like to thank my fiancée Abby, and my three children Halie, Wyatt, and Allie for being so patient and understanding how much time writing a book and organizing conferences demand. I love you all so very much and am lucky to have you.
+  I would also like to thank Bill Kennedy for the tremendous effort he has poured into this book—we asked him to help us write it, and he steered the ship most of the way due to the demands of our jobs and organizing GopherCon. I also want to thank the community for all their reviews and words of encouragement.
 
 ## 关于本书
 Go是一个开源程序语言，它能很容易构建简单、可信赖、有效的软件。虽然它是从其他语言借用的想法，但是它也有自己的独特性和简单性，使得Go程序和其他语言写的程序不同。它权衡低级语言和现今语言的一些高级特性。这创造了一个编程环境，可以提升生产效率，性能，以及控制能力。在Go中，写更少的代码，实现更多的功能。

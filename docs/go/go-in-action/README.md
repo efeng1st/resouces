@@ -108,7 +108,7 @@ At a time when it is hard to tell one computer book from another, Manning celebr
 
 ## 章节目录
 
-- 第一章: Go语言介绍
+- 第一章: [Go语言介绍](chapters/1.1.md)
     - 1.1 [使用Go来解决现代编程挑战](chapters/1.1.md)
     - 1.2 Hello, Go
     - 1.3 Summary

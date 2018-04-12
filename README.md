@@ -23,4 +23,4 @@
 ## 其他资源
 * [rethinkdb](https://github.com/rethinkdb/rethinkdb)： RethinkDB最早是作为一个对SSD进行专门优化的MySQL存储引擎出现的，其特点在于对SSD的充分利用。而目前RethinkDB已经脱离MySQL成为一个独立的存储。
 * [rabbitmq](https://github.com/rabbitmq/rabbitmq-server)
-
+* [AWS BPMN2 Process参考指南](https://docs.awspaas.com/reference-guide/aws-paas-process-reference-guide/process_structure/basic_process_concepts.html)

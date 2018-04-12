@@ -112,7 +112,7 @@ At a time when it is hard to tell one computer book from another, Manning celebr
     - 1.1 [使用Go来解决现代编程挑战](chapters/1.1.md)
     - 1.2 Hello, Go
     - 1.3 Summary
-- 第二章: Go语言快速入门
+- 第二章: [Go语言快速入门](chapters/2.1.md)
     - 2.1 Program architecture
     - 2.2 Main package
     - 2.3 Search package

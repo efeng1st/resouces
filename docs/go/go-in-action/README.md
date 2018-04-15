@@ -174,3 +174,4 @@ At a time when it is hard to tell one computer book from another, Manning celebr
 7. [曼宁网站](https://www.manning.com/books/go-in-action)
 8. [go in action code github](https:// github.com/goinaction/code)
 9. [Go Playground](http://play.golang.org)
+10. [Go资源搜索](http://go-search.org/)

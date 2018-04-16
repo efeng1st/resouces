@@ -118,7 +118,7 @@ At a time when it is hard to tell one computer book from another, Manning celebr
     - 2.3 Search package
     - 2.4 RSS matcher
     - 2.5 Summary
-- 第三章: 包和工具
+- 第三章: [包和工具](chapters/3.1.md)
     - 3.1 Packages
     - 3.2 Imports
     - 3.3 init
@@ -127,38 +127,38 @@ At a time when it is hard to tell one computer book from another, Manning celebr
     - 3.6 Collaborating with other Go developers
     - 3.7 Dependency management
     - 3.8 Summary
-- 第四章: 数组、分片及映射(array, slice, map)
+- 第四章: [数组、分片及映射(array, slice, map)](chapters/4.1.md)
     - 4.1 Array internals and fundamentals
     - 4.2 Slice internals and fundamentals
     - 4.3 Map internals and fundamentals
     - Summary
-- 第五章: Go语言类型系统
+- 第五章: [Go语言类型系统](chapters/5.1.md)
     - 5.1 User-defined types
     - 5.2 Methods
     - 5.3 The nature of types
-    - 5.4 Interfaces
+    - 5.4 [Interfaces](chapters/5.2.md)
     - 5.5 Type embedding
     - 5.6 Exporting and unexporting identifiers
     - 5.7 Summary
-- 第六章: 并发
+- 第六章: [并发](chapters/6.1.md)
     - 6.1 Concurrency versus parallelism
     - 6.2 Goroutines
     - 6.3 Race conditions
     - 6.4 Locking shared resources
     - 6.5 Channels
     - 6.6 Summary
-- 第七章: 并发模式
+- 第七章: [并发模式](chapters/7.1.md)
     - 7.1 Runner
     - 7.2 Pooling
     - 7.3 Work
     - 7.4 Summary
-- 第八章: 标准库
+- 第八章: [标准库](chapters/8.1.md)
     - 8.1 Documentation and source code
     - 8.2 Logging
     - 8.3 Encoding/Decoding
     - 8.4 Input and output
     - 8.5 Summary
-- 第九章: 测试和基准测试
+- 第九章: [测试和基准测试](chapters/9.1.md)
     - 9.1 Unit testing
     - 9.2 Examples
     - 9.3 Benchmarking

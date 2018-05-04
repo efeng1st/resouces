@@ -62,7 +62,7 @@ Go语言标准库
     - json	Package json implements encoding and decoding of JSON as defined in RFC 7159.
     - pem	Package pem implements the PEM data encoding, which originated in Privacy Enhanced Mail.
     - xml	Package xml implements a simple XML 1.0 parser that understands XML name spaces.
-- errors	Package errors implements functions to manipulate errors.
+- [errors](misc.md): 该包实现了操作errors的功能。
 - expvar	Package expvar provides a standardized interface to public variables, such as operation counters in servers.
 - flag	Package flag implements command-line flag parsing.
 - fmt	Package fmt implements formatted I/O with functions analogous to C's printf and scanf.
@@ -94,7 +94,7 @@ Go语言标准库
     - png	Package png implements a PNG image decoder and encoder.
 - index
     - suffixarray	Package suffixarray implements substring search in logarithmic time using an in-memory suffix array.
-- io	Package io provides basic interfaces to I/O primitives.
+- [io](io.md): 提供I/O元语的基本接口。
     - ioutil	Package ioutil implements some I/O utility functions.
 - log: [实现简单的日志包](../go-in-action/chapters/go-package-log.md)。
     - syslog	Package syslog provides a simple interface to the system log service.

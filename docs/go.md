@@ -248,5 +248,7 @@ go语言的条件判断语句有:
 5. select语句: select语句类似于switch语句，但是select语句会随机执行一个可运行的case. 如果没有case可运行，它将阻塞，知道有case可运行。
 
 
+
 ## 参考链接
 1. https://github.com/Unknwon/the-way-to-go_ZH_CN/blob/master/eBook/directory.md
+2. [Go语言常用包汇总](go/go-in-action/useful-packages-in-go.md)

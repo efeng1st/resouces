@@ -176,6 +176,7 @@ func (e *Endpoint) AddHandleFunc(name string, f HandleFunc) {
 }
 
 // Listen启动监听终端所有接口端口. 在这之前至少要有一个处理器通过AddHandlerFunc()加入进去。
+
 func (e *Endpoint) Listen() error {
     var err error
 	e.listener, err = net.Listen("tcp", Port)
@@ -196,12 +197,14 @@ func (e *Endpoint) Listen() error {
 }
 
 // handleMessages读取连接到第一个换行符。 基于这个字符串，它会调用恰当的HandleFunc。
+
 func (e *Endpoint) handleMessages(conn net.Conn) {
     // 将连接包装到缓冲reader以便于读取
     rw := bufio.NewReadWrite(bufio.NewReader(conn), bufio.NewWriter(conn))
     defer conn.Close()
 
-    // 
+    // 从连接读取直到遇到EOF. 期望下一次输入是命令名。调用注册的用于该命令的处理器。
+
     for {
         log.Print("Receive command '")
         cmd, err := rw.ReadString('\n')
@@ -212,9 +215,253 @@ func (e *Endpoint) handleMessages(conn net.Conn) {
         case err != nil:
             log.Println("\nError reading command. Got: '" + cmd + "'\n", err)
         }
+
+        // 修剪请求字符串中的多余回车和空格- ReadString不会去掉任何换行。
+
+        cmd = strings.Trim(cmd, "\n ")
+        log.Println(cmd + "'")
+
+        // 从handler映射中获取恰当的处理器函数, 并调用它。
+
+        e.m.Lock()
+        handleCommand, ok := e.handler[cmd]
+        e.m.Unlock()
+
+        if !ok {
+            log.Println("Command '" + cmd + "' is not registered.")
+            return
+        }
+
+        handleCommand(rw)
     }
+}
+
+
+// 下面我们创建两个handler函数。 最简单的是我们的只发送字符串数据的即时协议。
+
+// handleStrings处理STRING请求
+
+func handleStrings(rw *bufio.ReadWriter) {
+    // 接收到一个字符串
+    log.Print("Receive STRING message:")
+    s, err := rw.ReadString('\n')
+    if err != nil {
+        log.Println("Cannot read from connection.\n", err)
+    }
+
+    s = strings.Trim(s, "\n ")
+    log.Println(s)
+
+    -, err = rw.WriteString("Thank you.\n")
+    if err != nil {
+        log.Println("Cannot write to connection.\n", err)
+    }
+
+    err = rw.Flush()
+    if err != nil {
+        log.Println("Flush failed.", err)
+    }
+}
+
+// handleGob处理GOB请求。 它将接收到的GOB数据解码为GOB结构体。
+
+func handleGob(rw *bufio.ReadWriter) {
+    log.Print("Receive GOB data:")
+    var data complexData
+
+    // 创建一个decoder直接将接收到的数据转换为结构体变量
+     
+    dec := gob.NewDecoder(rw)
+    err := dec.Decode(&data)
+
+    if err != nil {
+        log.Println("Error decoding GOB data:", err)
+        return
+    }
+
+    // 打印complexData结构体和内嵌的结构体。证明可以通过线遍历下去。
+
+    log.Printf("Outer complexData struct: \n%#v\n", data)
+    log.Printf("Inner complexData struct: \n%#v\n", data.C)
 }
 ```
 
+### 客户端和服务端函数
+有了这一切，我们现在可以设置客户端和服务端函数了。
+客户端函数连接到服务器并发送STRING和GOB请求。
+
+服务端开始监听请求并触发合适的处理器。
+
+```go
+// 当应用程序使用-connect=ip地址的时候被调用
+
+func client(ip string) error {
+    // 一些测试数据. 注意GOB是如何处理映射、分片以及递归数据结构而没有任何问题的。
+
+    testStruct := complexData{
+        N: 23,
+        S: "string data",
+        M: map[string]int{"one": 1, "two": 2, "three": 3},
+        P: []byte("abc"),
+        C: &complexData{
+            N: 256,
+            S: "Recursive structs? Piece of cake!",
+            M: Map[string]int{"01": "10": 2, "11": 3},
+        },
+    }
+
+    // 打开到服务器的连接
+
+    rw, err := Open(ip + Port)
+    if err != nil {
+        return errors.Wrap(err, "Client: Failed to open connection to " + ip + Port)
+    }
+
+    log.Println("Send the string request.")
+
+    n, err := rw.WriteString("STRING\n")
+    if err != nil {
+        return errors.Wrap(err, "Could not send the STRING request (" + strconv.Itoa(n) + " bytes written)")
+    }
+
+    // 发送STRING请求。发送请求名并发送数据。
+
+    log.Println("Send the string request.")
+
+    n, err = rw.WriteString("Additional data.\n")
+    if err != nil {
+        return errors.Wrap(err, "Could not send additional STRING data (" + strconv.Itoa(n) + " bytes written)")
+    }
+
+    log.Println("Flush the buffer.")
+    err = rw.Flush()
+    if err != nil {
+        return errors.Wrap(err, "Flush failed.")
+    }
+
+    // 读取响应
+
+    log.Println("Read the reply.")
+
+    response, err := rw.ReadString('\n')
+    if err != nil {
+        return errors.Wrap(err, "Client: Failed to read the reply: '" + response + "'")
+    }
+
+    log.Println("STRING request: got a response:", response)
+   
+    // 发送GOB请求。 创建一个encoder直接将它转换为rw.Send的请求名。发送GOB
+
+    log.Println("Send a struct as GOB:")
+    log.Printf("Outer complexData struct: \n%#v\n", testStruct)
+	log.Printf("Inner complexData struct: \n%#v\n", testStruct.C)
+    enc := gob.NewDecoder(rw)
+    n, err = rw.WriteString("GOB\n")
+    if err != nil {
+        return errors.Wrap(err, "Could not write GOB data (" + strconv.Itoa(n) + " bytes written)")
+    }
+
+    err = enc.Encode(testStruct)
+    if err != nil {
+        return errors.Wrap(err, "Encode failed for struct: %#v", testStruct)
+    }
+
+    err = rw.Flush()
+    if err != nil {
+        return errors.Wrap(err, "Flush failed.")
+    }
+
+    return nil
+}
+```
+
+下面是服务端程序server。服务端监听进来的请求并根据请求命令名将它们调度给注册的具体相关处理器。
+
+```go
+func server() error {
+    endpoint := NewEndpoint()
+
+    // 添加处理器函数
+
+    endpoint.AddHandleFunc("STRING", handleStrings)
+    endpoint.AddHandleFunc("GOB", handleGOB)
+
+    // 开始监听
+
+    return endpoint.Listen()
+}
+```
+
+### main函数
+下面的main函数既可以启动客户端也可以启动服务端， 依赖于是否设置connect标志。 如果没有这个标志，则以服务器启动进程， 监听进来的请求。如果有标志， 启动为客户端，并连接到这个标志指定的主机。
+
+可以使用localhost或127.0.0.1在同一机器上运行这两个进程。
+```go
+func main() {
+    connect := flag.String("connect", "", "IP address of process to join. If empty, go into the listen mode.")
+    flag.Parse()
+
+    // 如果设置了connect标志，进入客户端模式
+
+    if *connect != '' {
+        err := client(*connect)
+        if err != nil {
+            log.Println("Error:", errors.WithStack(err))
+        }
+        log.Println("Client done.")
+        return
+    }
+
+    // 否则进入服务端模式
+
+    err := server()
+    if err != nil {
+        log.Println("Error:", errors.WithStack(err))
+    }
+
+    log.Println("Server done.")
+}
+
+// 设置日志记录的字段标志
+
+func init() {
+    log.SetFlags(log.Lshortfile)
+}
+```
+
+## 如何获取并运行代码
+
+第一步: 获取代码。 注意-d标志自动安装二进制到$GOPATH/bin目录。
+```go
+go get -d github.com/appliedgo/networking
+```
+
+第二步: cd到源代码目录。
+cd $GOPATH/src/github.com/appliedgo/networking
+
+第三步: 运行服务端。
+go run networking.go
+
+第四步: 打开另外一个shell, 同样进入到源码目录(第二步), 然后运行客户端。
+go run networking.go -connect localhost
+
+## Tips
+如果你想稍微修改下源代码，下面是一些建议:
+* 在不同机器运行客户端和服务端(同一个局域网中).
+* 用更多的映射和指针来增强(beef up)complexData, 看看gob如何应对它(cope with it)。
+* 同时启动多个客户端，看看服务端是否能处理它们。
+
+
+> 2017-02-09: map不是线程安全的，因此如果在不同的goroutine中使用同一个map, 应该使用互斥锁来控制map的访问。
+> 而上面的代码，map在goroutine启动之前已经添加好了， 因此你可以安全的修改代码，在handleMessages goroutine已经运行的时候调用AddHandleFunc()。
+
+## 本章所学知识点总结
+---- 2018-05-04 -----
+
+- bufio的应用。
+- gob的应用。
+
 ## 参考链接
 * [TCP/IP网络](https://appliedgo.net/networking/)
+* [简单的TCP服务端和客户端](https://systembash.com/a-simple-go-tcp-server-and-tcp-client/)
+* [gob数据](https://blog.golang.org/gobs-of-data)

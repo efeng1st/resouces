@@ -1,5 +1,12 @@
 # 资源汇总
 
+## go语言
+* [Go入门指南](docs/go/the-way-to-go/README.md)
+* [Golang优秀开源项目汇总](https://studygolang.com/articles/8227)
+* [Go语言常用包汇总](docs/go/go-in-action/useful-packages-in-go.md)
+* [Go TCP/IP网络编程](docs/go/go-in-action/tcp_ip.md)
+* [Go In Action翻译](docs/go/go-in-action/)
+
 ## PHP资源
 * [dva + antd + lumen后台管理实现](https://github.com/walkerqiao/dva-antd-demos)
 * [php版本的swoole服务管理脚本](https://github.com/walkerqiao/swoole_command)
@@ -15,10 +22,6 @@
 * [ChatterBot](https://github.com/gunthercox/ChatterBot) : ChatterBot是一个基于机器学习的聊天机器人引擎,构建在python上,可以从已有的对话中学习, 该项目的设计允许它接入任何语言。
 * [微博爬虫](https://github.com/SpiderClub/weibospider)
 
-## go语言
-* [Go入门指南](docs/go/the-way-to-go/README.md)
-* [Golang优秀开源项目汇总](https://studygolang.com/articles/8227)
-* [Go语言常用包汇总](docs/go/go-in-action/useful-packages-in-go.md)
 
 ## 大数据和人工智能
 * [深度学习](docs/deep-learning.md)

@@ -18,6 +18,7 @@
 ## go语言
 * [Go入门指南](docs/go/the-way-to-go/README.md)
 * [Golang优秀开源项目汇总](https://studygolang.com/articles/8227)
+* [Go语言常用包汇总](docs/go/go-in-action/useful-packages-in-go.md)
 
 ## 大数据和人工智能
 * [深度学习](docs/deep-learning.md)

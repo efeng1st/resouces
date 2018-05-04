@@ -195,7 +195,25 @@ func (e *Endpoint) Listen() error {
 	}
 }
 
-func 
+// handleMessages读取连接到第一个换行符。 基于这个字符串，它会调用恰当的HandleFunc。
+func (e *Endpoint) handleMessages(conn net.Conn) {
+    // 将连接包装到缓冲reader以便于读取
+    rw := bufio.NewReadWrite(bufio.NewReader(conn), bufio.NewWriter(conn))
+    defer conn.Close()
+
+    // 
+    for {
+        log.Print("Receive command '")
+        cmd, err := rw.ReadString('\n')
+        switch {
+        case err == io.EOF:
+            log.Println("Reached EOF - close this connection.\n  ---")
+            return
+        case err != nil:
+            log.Println("\nError reading command. Got: '" + cmd + "'\n", err)
+        }
+    }
+}
 ```
 
 ## 参考链接

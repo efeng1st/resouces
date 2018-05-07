@@ -6,7 +6,8 @@
 * [Go语言常用包汇总](docs/go/go-in-action/useful-packages-in-go.md)
 * [Go TCP/IP网络编程](docs/go/go-in-action/tcp_ip.md)
 * [Go In Action翻译](docs/go/go-in-action/)
-
+* [Applied Go](https://appliedgo.net/): 比Go教程更深入的一些文章, 值得一读。
+* [微服务](docs/microservice/)
 ## PHP资源
 * [dva + antd + lumen后台管理实现](https://github.com/walkerqiao/dva-antd-demos)
 * [php版本的swoole服务管理脚本](https://github.com/walkerqiao/swoole_command)

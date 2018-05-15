@@ -33,3 +33,5 @@
 - https://ewanvalentine.io/microservices-in-golang-part-1/
 - http://callistaenterprise.se/blogg/teknik/2017/02/17/go-blog-series-part1/
 - https://ewanvalentine.io/tag/go/
+- [Go语言RESTful JSON API构建](make-a-restful-json-api-go.md)
+- [容器和容器编排工具](containers-container-orchestration.md)

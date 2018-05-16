@@ -24,62 +24,68 @@ CLI满足在单个主机上管理容器的需求，但是面对部署在多个�
 工作负载通常对主机放置、性能和高可用具有特殊的策略或要求。例如，在同一主机上提供主备数据库容器是无意义的；它破坏了目的性。类似的，在web服务器同一机器上放置内存缓存可能是个好主意。 编排工具支持定义容易放置的亲和性和约束的机制。
 
 ## Provisioning
-Provisioning, or scheduling, deals with negotiating the placement of containers within the cluster and launching them. This process involves selecting an appropriate host based on the configuration. Apart from a container-provisioning API, orchestration tools will invoke the infrastructure APIs specific to the host environment.
+供应(Provisioning)或调度是处理容器在集群中的放置和启动的。这个过程包括根据配置选择合适的主机。除了容器提供API, 编排工具也涉及针对主机环境的基础设施API。
 
-## Discovery
-In a distributed deployment consisting of containers running on multiple hosts, container discovery becomes critical. Web servers need to dynamically discover the database servers, and load balancers need to discover and register web servers. Orchestration tools provide, or expect, a distributed key-value store, a lightweight DNS or some other mechanism to enable the discovery of containers.
+## 发现
+在由运行于多个主机上的容器组成的分布式部署, 容器发现至关重要。Web服务器需要动态发现数据库服务器，负载均衡需要发现并注册web服务器。 编排工具提供或期望有一个分布式key-value存储, 轻量级DNS或一些其他能够发现容器的机制。
 
-## Health Monitoring
-Since orchestration tools are aware of the desired configuration of the system, they are uniquely able to track and monitor the health of the system’s containers and hosts. In the event of host failure, the tools can relocate the container. Similarly, when a container crashes, orchestration tools can launch a replacement. Orchestration tools ensure that the deployment always matches the desired state declared by the developer or operator.
+## 健康监控
+既然编排工具知道系统的期望配置，所以它们能够唯一的监控系统容器和主机的健康情况。在主机故障的情况下，这个工具可以重新定位容器。类似的，当容器崩溃时，编排工具可以启动替换。编排工具确保部署始终处于开发人员或操作人员声明的期望状态。
 
-## A Closer Look at Three Popular Orchestration Platforms
-Docker Swarm
-The objective of Docker Swarm is to use the same Docker API that works with the core Docker Engine. Instead of targeting an API endpoint representing one Docker Engine, Swarm transparently deals with an endpoint associated with a pool of Docker Engines. The key advantage to this approach is that the existing tools and APIs will continue to work with a cluster in the same way they work with a single instance. Docker’s tooling/CLI and Compose are how developers create their applications, and therefore, they don’t have to be recoded to accommodate an orchestrator.
-
+## 仔细看看三种流行的编排工具
+### Docker Swarm
+Docker Swarm的目标是使用和核心Docker引擎一起工作同样的Docker API。API端点的目标不是代表一个Docker引擎，Swarm透明的处理与Docker引擎池相关联的端点。这种方法的关键优势在于现有工具和API能够和对待单个实例的相同方式对待集群。Docker的工具/CLI和Compose是开发者如何创建它们应用程序的，因此，它们不得不重新编排来容纳一个编排器。
 
 ![](images/Chart_Docker-Swarm-Swap-Plug-and-Play.png)
 
-Docker Swarm comes with several built-in scheduling strategies, giving users the ability to guide container placement so as to maximize or minimize the spread of containers across the cluster. Random placement is supported as well.
+遵循Docker的"自带电源、可移动"的哲学思想，支持数个发现后端，包括静态文件和IP地址，etcd, Consul和ZooKeeper。调度策略也是可插拔的。
 
-Docker seeks to follow the principle of “batteries included but removable,” meaning that while it currently ships with only a handful of simple scheduling backends, in the future it may support additional backends through a pluggable interface. Based on the scale and complexity of a given use case, developers or operations staff might choose to plug in an appropriate alternative backend.
+- etcd: CoreOS 团队发起的一个管理配置信息和服务发现的项目。
+- Consul: 另外一个提供服务发现的工具，它是分布式的、高可用、横向可扩展的。
+- ZooKeeper: 一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。
 
-Docker Swarm supports constraints and affinities to determine the placement of containers on specific hosts. Constraints define requirements to select a subset of nodes that should be considered for scheduling. They can be based on attributes like storage type, geographic location, environment and kernel version. Affinity defines requirements to collocate containers on hosts.
+Docker Swarm由几个内置的调度策略组成，给予用户指导容器放置的能力, 以最大化或最小化容器在集群中的扩散。也支持随机放置。
 
-For discovering containers on each host, Swarm uses a pluggable backend architecture that works with a simple hosted discovery service, static files, lists of IPs, etcd, Consul and ZooKeeper.
+Docker寻址遵循"自带电源，但可移动"的原则，意思就是当前只使用少量的简单调度后端搬运，但是将来通过可插拔接口它能支持额外的后端。基于给定用例的规模和复杂度，开发人员和操作人员可以选择插入恰当的替代后端。
 
-Swarm supports basic health monitoring, which prevents provisioning containers on faulty hosts.
+Docker Swarm支持确定容易在特定主机放置的约束和亲和力。
 
+约束(Constraints)定义了需要选择用于调度的节点子集的要求。它们可以基于存储类型、地理位置、环境以及内核版本等属性。
+亲和力(Affinity)定义了在主机上分配容器的需求。
 
+为了在每个主机上发现容器，Swarm使用了可插拔后端架构，它与一个简单的托管发现服务、静态文件、IP列表、etcd、Consul和ZooKeeper一起工作。
+
+Swarm支持基本的将康监控，这样可以防止在故障主机上提供容器。
 
 ## Kubernetes
-Coming from Google — a company that claims to deal with two billion containers every day — Kubernetes enjoys unique credibility.
+来自Google - 声称每天处理20亿容器的公司 - 的Kubernetes享有独特的声誉。
 
 ![](images/Chart_Kubernetes-Building-on-Architectural-Roots.png)
 
-Kubernetes’ architecture is based on a master server with multiple minions. The command line tool, called kubecfg, connects to the API endpoint of the master to manage and orchestrate the minions. Below is the definition of each component that runs within the Kubernetes environment:
+Kubernetes的架构是基于一个带有很多奴仆的主服务器。命令行工具叫做kubecfg, 连接主服务器端点API来管理和编排奴仆节点。下面是运行在Kubernetes环境里边的每个组件的定义:
 
-- Master: The server that runs the Kubernetes management processes, including the API service, replication controller and scheduler.
-- Minion: The host that runs the kubelet service and the Docker Engine. Minions receive commands from the master.
-- Kubelet: The node-level manager in Kubernetes; it runs on a minion.
-- Pod: The collection of containers deployed on the same minion.
-- Replication controller: Defines the number of pods or containers that need to be running.
-- Service: A definition that allows the discovery of services/ports published by each container, along with the external proxy used for communications.
-- Kubecfg: The command line interface that talks to the master to manage a Kubernetes deployment.
+- Master: 运行Kubernetes管理进程的服务器，包括API服务，替换控制器和调度器。
+- Minion: 运行kubelet服务和Docker引擎的主机。Minions从master接收命令。
+- Kubelet: Kubernetes中的节点级别的管理器; 运行在minion上的。
+- Pod: 部署在同一个minion上的容器集合。
+- Replication controller: 定义需要运行的pods或容器数量。
+- Service: 定义允许发现由每个容器以及使用通信的外部代理发布的服务/ports。
+- Kubecfg: 和master沟通用于管理Kubernetes部署的命令行接口。
 
-The service definition, along with the rules and constraints, is described in a JSON file. For service discovery, Kubernetes provides a stable IP address and DNS name that corresponds to a dynamic set of pods. When a container running in a Kubernetes pod connects to this address, the connection is forwarded by a local agent (called the kube-proxy) running on the source machine to one of the corresponding backend containers.
+服务定义以及规则和约束是用JSON文件描述的。对于服务发现，Kubernetes提供了一个稳定的IP地址和相对于动态的pods集合的DNS名。当运行在Kubernetes pod上的容器连接到这个地址，连接被一个本地代理(叫做kube-proxy)转发到一个具体的后端容器。
 
-Kubernetes supports user-implemented application health checks. These checks are performed by the kubelet running on each minion to ensure that the application is operating correctly. Currently, Kubernetes supports three types of health checks:
+Kubernetes支持用户实现的应用程序健康检查。这些检查由运行在每个minion上的kubelet执行, 以确保应用程序正确操作。当前，Kubernetes支持三种类型的健康检查：
 
-- HTTP health check: The kubelet will call a web endpoint. If the response code is between 200 and 399, it is considered a success.
-- Container exec: The kubelet will execute a command within the container. If it returns “OK,” it is considered a success.
-- TCP socket: The kubelet will attempt to open a socket to the container and establish a connection. If the connection is made, it is considered healthy.
+- HTTP健康检查: kubelet将调用web端点。如果响应码是200到399之间，它就认为是成功的。
+- Container exec: kubelet将在容器中执行一个命令。如果返回OK, 认为就是成功的。
+- TCP socket: kubelet将尝试打开一个到容器的socket, 并确立一个连接。如果连接产生的话，就认为是健康的。
 
 ## Apache Mesos
-Apache Mesos is an open source cluster manager that simplifies the complexity of running tasks on a shared pool of servers. Originally designed to support high-performance computing workloads, Mesos added support for Docker in the 0.20.0 release.
+Apache Mesos是一个开源集群管理器，简化了在共享服务器池上运行任务的复杂度。最初设计用于支持高性能计算负载, Mesos在0.20.0发布版本添加了Docker的支持。
 
 ![](images/Chart_Apache-Mesos-Built-for-High-Performance-Workloads.png)
 
-A typical Mesos cluster consists of one or more servers running the mesos-master and a cluster of servers running the mesos-slave component. Each slave is registered with the master to offer resources. The master interacts with deployed frameworks to delegate tasks to slaves. Below is an overview of Mesos’ architecture:
+一般的Mesos集群由一个或多个运行mesos-master服务器和运行了mesos-slave组件的服务器组成。每个slave注册到master来提供资源。 master和部署框架交互来给slaves委派任务。 下面是Mesos的架构:
 
 - Master daemon: The mesos-master service runs on a master node and manages slave daemons.
 - Slave daemon: The mesos-slave service runs on each slave node to run tasks that belong to a framework.
@@ -92,8 +98,8 @@ Unlike other tools, Mesos ensures high availability of the master nodes using Ap
 
 When Mesos is used in conjunction with Marathon, service discovery can be enabled based on the HAProxy TCP/HTTP load balancer, along with an assistant script that uses Marathon’s REST API to regenerate a HAProxy configuration file periodically. Alternatively, Mesos-DNS, a DNS-based service discovery mechanism, has recently been released in beta.
 
-## Summary
-The container ecosystem is growing rapidly. From major infrastructure companies to PaaS vendors to early-stage startups and even in serverless computing, everyone is clamoring to stake out their place in the ecosystem. There are many contributors working on container orchestration tools, as these are essential for deploying real-world applications, thus driving the adoption of Docker and containers. We attempted to highlight some of the key contributors building orchestration tools, but there is more to it than just explicit orchestration tools — it’s also important to look at the build, deployment, CI/CD, PaaS, and other tools that orchestrators interact with, which we cover at great length in the Automation and Orchestration Directory.
+## 总结
+容器编排正快速发展。从主要的基础设施公司到PAAS供应商到早起的创业公司以及无服务器计算中，每个人都在叫嚣着在生态系统中占有一席之地。在容器编排工具上有很多贡献者，因为这些对于部署真实世界的应用程序是必不可少的，从而推动了Docker和容器的采用。 我们视图强调一些构建配置工具的关键贡献者，但它不仅仅是明显的编排工具，更重要的是，要查看构建、部署、CI/CD、Paas和编排器交互的其他工具，这是我们在自动化和编排目录涵盖大量篇幅的。
 
 ## 参考链接
 - https://thenewstack.io/containers-container-orchestration/
